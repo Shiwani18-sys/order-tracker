@@ -36,7 +36,12 @@ def get_orders():
             "SELECT order_id, customer_name, amount FROM orders"
         )
         return cursor.fetchall()
-
+def get_total_revenue():
+    with sqlite3.connect(DB_NAME) as connection:
+        cursor = connection.execute(
+            "SELECT COALESCE(SUM(amount), 0) FROM orders"
+        )
+        return cursor.fetchone()[0]
 
 if __name__ == "__main__":
     create_table()

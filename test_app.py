@@ -38,3 +38,9 @@ def test_reject_negative_amount(setup_database):
 
 def test_empty_database(setup_database):
     assert app.get_orders() == []
+
+def test_total_revenue(setup_database):
+    app.add_order("Anuska", 500)
+    app.add_order("Rahul", 750)
+
+    assert app.get_total_revenue() == 1250
