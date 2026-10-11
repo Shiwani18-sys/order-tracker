@@ -1,0 +1,10 @@
+
+services:
+  order-tracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: order-tracker:v1
+    container_name: order-tracker-compose
+    command: ["python", "app.py"]
+    restart: "no"
